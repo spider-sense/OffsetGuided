@@ -61,8 +61,10 @@ def evaluate_cli():
                         default='hourglass104_focal_l2_instance_l1_sqrt_epoch_77__distmax40_640_input_1scale_flip_hmpoff_gamma2_thre004',
                         type=str, help='detection file name')
 
-    parser.add_argument('--dataset', choices=('val', 'test', 'test-dev'), default='val',
-                        help='dataset to evaluate')
+    # parser.add_argument('--dataset', choices=('val', 'test', 'test-dev'), default='val',
+                        # help='dataset to evaluate')
+    parser.add_argument('--images-dir', type=str, help='directory where images are stored')
+    parser.add_argument('--annotation-file', type=str, help='path to annotation json')
     parser.add_argument('--batch-size', default=8, type=int,
                         help='batch size')
     parser.add_argument('--long-edge', default=640, type=int,
@@ -103,21 +105,21 @@ def evaluate_cli():
     #     '--checkpoint-whole link2checkpoints_storage/PoseNet_18_epoch.pth --resume --no-pretrain'.split())
     args = parser.parse_args()
 
-    if args.dataset == 'val':
-        args.image_dir = IMAGE_DIR_VAL
-        args.annotation_file = ANNOTATIONS_VAL
-    elif args.dataset == 'test':
-        args.image_dir = IMAGE_DIR_TEST
-        args.annotation_file = ANNOTATIONS_TEST
-    elif args.dataset == 'test-dev':
-        args.image_dir = IMAGE_DIR_TEST
-        args.annotation_file = ANNOTATIONS_TESTDEV
-    else:
-        raise Exception
+    # if args.dataset == 'val':
+    #     args.image_dir = IMAGE_DIR_VAL
+    #     args.annotation_file = ANNOTATIONS_VAL
+    # elif args.dataset == 'test':
+    #     args.image_dir = IMAGE_DIR_TEST
+    #     args.annotation_file = ANNOTATIONS_TEST
+    # elif args.dataset == 'test-dev':
+    #     args.image_dir = IMAGE_DIR_TEST
+    #     args.annotation_file = ANNOTATIONS_TESTDEV
+    # else:
+    #     raise Exception
 
-    if args.dataset in ('test', 'test-dev') and not args.all_images:
-        print('force to use --all-images for this dataset because catIds are unknown')
-        args.all_images = True
+    # if args.dataset in ('test', 'test-dev') and not args.all_images:
+    #     print('force to use --all-images for this dataset because catIds are unknown')
+    #     args.all_images = True
 
     return args
 
