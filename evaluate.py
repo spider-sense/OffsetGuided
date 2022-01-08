@@ -61,9 +61,9 @@ def evaluate_cli():
                         default='hourglass104_focal_l2_instance_l1_sqrt_epoch_77__distmax40_640_input_1scale_flip_hmpoff_gamma2_thre004',
                         type=str, help='detection file name')
 
-    # parser.add_argument('--dataset', choices=('val', 'test', 'test-dev'), default='val',
-                        # help='dataset to evaluate')
-    parser.add_argument('--images-dir', type=str, help='directory where images are stored')
+    parser.add_argument('--dataset', choices=('val', 'test', 'test-dev'), default='val',
+                        help='dataset to evaluate')
+    parser.add_argument('--image-dir', type=str, help='directory where images are stored')
     parser.add_argument('--annotation-file', type=str, help='path to annotation json')
     parser.add_argument('--batch-size', default=8, type=int,
                         help='batch size')
